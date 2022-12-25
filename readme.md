@@ -8,7 +8,7 @@ npm i -g ytdx
 ```
 
 ## Usage
-Create a directory (folder) and run the following command:
+You will need a directory (folder) and a public YouTube playlist
 ```
 ytdx --dir DIRECTORY_NAME --id PLAYLIST_ID
 ```
