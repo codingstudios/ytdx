@@ -1,4 +1,4 @@
-# [ytdx](https://github.com/codingstudios/ytdx)
+# [`ytdx`](https://github.com/codingstudios/ytdx)
 ## YouTube Playlist Downloader
 Download a YouTube playlist (mp3 format) through CLI
 
