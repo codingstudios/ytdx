@@ -80,7 +80,7 @@ async function run(playlistID, dirname) {
     Playlist downloaded - ${downloaded.length}/${videos.length} (${((((Date.now() - start) / 1000)) / 60).toFixed(3)} minutes(s))
     `)
 };
-
+  
 process.on('uncaughtException', async function (err) {
    console.log(err)
 });  
