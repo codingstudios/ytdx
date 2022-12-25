@@ -1,8 +1,8 @@
-# YouTube Playlist Downloader
+# [YouTube Playlist Downloader](https://github.com/codingstudios/ytdx)
 Download a YouTube playlist through CLI
 
 ## Install
-Install the CLI globally
+node.js version 16 or above is required
 ```
 npm i -g ytdx
 ```
