@@ -4,7 +4,7 @@ An easy to use **YouTube playlist downloader** (mp3 format) CLI tool
 ## Install
 Requires `node.js@>=16` & [ffmpeg](https://www.ffmpeg.org)
 ```
-npm i -g ytdx
+npm install -g ytdx
 ```
 
 ## Usage
