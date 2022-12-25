@@ -2,11 +2,18 @@
 Download a YouTube playlist through CLI
 
 ## Install
+Install the CLI globally
 ```
-npm i -g ytdx 
+npm i -g ytdx
 ```
+
+## Usage
+Create a directory (folder) and run the following command:
 ```
-npx ytdx
+ytdx --dir DIRECTORY_NAME --id PLAYLIST_ID
 ```
+
+
+
 
 
