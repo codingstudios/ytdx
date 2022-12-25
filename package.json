@@ -1,6 +1,6 @@
 {
   "name": "ytdx",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "YouTube playlist downloader",
   "main": "index.js",
   "bin": {
@@ -20,13 +20,19 @@
     "url": "https://github.com/CodingStudios/ytdx/issues"
   },
   "homepage": "https://github.com/CodingStudios/ytdx#readme",
-  "engines" : { 
-    "node" : ">=16.0.0"
+  "engines": {
+    "node": ">=16.2.0"
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "fluent-ffmpeg": "^2.1.2",
     "minimist": "^1.2.7",
     "youtube-sr": "^4.3.4",
     "ytdl-core": "^4.11.2"
-  }
+  },
+  "keywords": [
+    "youtube",
+    "cli",
+    "playlist"
+  ]
 }
