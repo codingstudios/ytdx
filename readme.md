@@ -2,7 +2,7 @@
 Download a YouTube playlist through CLI
 
 ## Install
-node.js version 16 or above is required
+node.js version 16 or above & ffmpeg is required
 ```
 npm i -g ytdx
 ```
