@@ -1,9 +1,8 @@
-# [`ytdx`](https://github.com/codingstudios/ytdx)
-## YouTube Playlist Downloader
-Download a YouTube playlist (mp3 format) through CLI
+# [ytdx](https://github.com/codingstudios/ytdx)
+An easy to use **YouTube playlist downloader** (mp3 format) CLI tool
 
 ## Install
-Requires node.js version 16 or above & [ffmpeg](https://www.ffmpeg.org)
+Requires `node.js@>=16` & [ffmpeg](https://www.ffmpeg.org)
 ```
 npm i -g ytdx
 ```
