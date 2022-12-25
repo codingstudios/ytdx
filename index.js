@@ -2,9 +2,11 @@
 import ffmpeg from 'fluent-ffmpeg';
 import ytdl from 'ytdl-core';
 import search from "youtube-sr";
+import ffmpegPath from "@ffmpeg-installer/ffmpeg";
 import fs from 'fs';
 import  pkg from './package.json' assert { type: "json" };
 import minimist from 'minimist';
+ffmpeg.setFfmpegPath(ffmpegPath.path);
 const collection = new Set();
 const downloaded = [];
 const all = [];
@@ -25,7 +27,7 @@ function error(msg) {
 ;(async () => {
 switch(command) {
     case "h":
-    case "help":
+    case "help":    
     console.log(`
     YouTube Playlist Downloader v${pkg.version}
     https://github.com/codingstudios/ytdx
@@ -43,40 +45,42 @@ switch(command) {
 }
 })();
 
-const getAudio = (video, dir) => new Promise((resolve, reject) => {
-    var stream = ytdl(video?.url, { filter: 'audioonly' });
+const getAudio = (video, dir, videos) => new Promise((resolve, reject) => {
+    var stream = ytdl(video?.url, { filter: 'audioonly', quality: 'highestaudio' });
     var file = fs.createWriteStream(`./${dir}/${video?.title.split("/").join(" ").split(".").join(" ")}.mp3`);
     ffmpeg(stream)
     .format('mp3') 
     .save(file) 
     .on('end', () => {
-        collection.add(`${video?.title}`); 
-        resolve(`Done ${video?.title}`);
+    collection.add(`${video?.title}`); 
+    resolve(`Done (${downloaded.length+1}/${videos.length}) ${video?.title}`);
     })  
 });        
 
 async function run(playlistID, dirname) {
+    const start = Date.now();
     const dir = fs.readdirSync(`./${dirname}`).filter(file => file.endsWith('.mp3'));
-    dir.forEach(di => {
-        collection.add(di.slice(0, -4));
-        downloaded.push(di.slice(0, -4));
-    })   
+    for(const i in dir) {
+        collection.add(dir[i].slice(0, -4));
+        downloaded.push(dir[i].slice(0, -4));
+    }  
     await wait(5000);  
     const data = (await search.getPlaylist(`${playlistID}`).then(playlist => playlist.fetch()).catch(() => error("Invalid playlist ID provided")));
     if(!Array.isArray(data?.videos)) return error("No videos found"); 
     const videos = data.videos;  
-    videos.forEach(async (video, i) => {
-        all.push(video.title);   
-       if(!collection.has(video?.title.split("/").join(" ").split(".").join(" "))) { 
-         console.log(await getAudio(video, dirname));  
-         downloaded.push(video?.title);
-         console.log(downloaded.length, videos.length)
+    for(const i in videos) {
+        all.push(videos[i].title);   
+       if(!collection.has(videos[i]?.title.split("/").join(" ").split(".").join(" "))) { 
+    console.log(`
+    ${await getAudio(videos[i], dirname, videos)}`);  
+         downloaded.push(videos[i]?.title);
        }   
-    })
+    }
+    console.log(`
+    Playlist downloaded - ${downloaded.length}/${videos.length} (${((((Date.now() - start) / 1000)) / 60).toFixed(3)} minutes(s))
+    `)
 };
 
-
-  
 process.on('uncaughtException', async function (err) {
    console.log(err)
 });  
