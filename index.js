@@ -4,10 +4,8 @@ import ytdl from 'ytdl-core';
 import search from "youtube-sr";
 import fs from 'fs';
 import  pkg from './package.json' assert { type: "json" };
-import { Collection } from '@discordjs/collection';
 import minimist from 'minimist';
 const collection = new Set();
-const collection2 = new Collection();
 const downloaded = [];
 const all = [];
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -69,7 +67,6 @@ async function run(playlistID, dirname) {
     const videos = data.videos;  
     videos.forEach(async (video, i) => {
         all.push(video.title);   
-        collection2.set(video.title, video.url);
        if(!collection.has(video?.title.split("/").join(" ").split(".").join(" "))) { 
          console.log(await getAudio(video, dirname));  
          downloaded.push(video?.title);
