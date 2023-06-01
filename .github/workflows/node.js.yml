@@ -24,6 +24,7 @@ jobs:
         cache: 'npm'
     - name: Run
       run: |
+        npm i --package-lock-only
         npm install
         npm install node-fetch
         node index.js --dir .github --id PL8hapc2gtF5Fo03eEnfp-t34aLkXdzI0L
