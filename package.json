@@ -1,7 +1,7 @@
 {
   "name": "ytdx",
-  "version": "1.0.5",
-  "description": "YouTube playlist downloader",
+  "version": "2.0.0",
+  "description": "Multi thread YouTube playlist audio downloader",
   "main": "index.js",
   "bin": {
     "ytdx": "index.js"
@@ -26,9 +26,9 @@
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "fluent-ffmpeg": "^2.1.2",
-    "minimist": "^1.2.7",
+    "minimist": "^1.2.8",
     "youtube-sr": "^4.3.4",
-    "ytdl-core": "^4.11.2"
+    "ytdl-core": "^4.11.4"
   },
   "keywords": [
     "youtube",
